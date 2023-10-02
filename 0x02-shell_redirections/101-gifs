@@ -1,11 +1,5 @@
 #!/bin/bash
-#!/bin/bash
 
-find . -type f -name "*.gif" | while read -r file; do
-    filename="${file##*/}"  # Extract filename from path
-    filename="${filename%.*}"  # Remove extension
+find . -type f -iname "*.gif" -exec basename -s .gif {} \; | sort -f
 
-    echo "$filename"
-done | LC_ALL=C sort -f  # Sort case-insensitively
-
-echo  # New line at the end
+echo
