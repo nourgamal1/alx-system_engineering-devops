@@ -1,2 +1,11 @@
 #!/bin/bash
-find . -name "*.gif" -type f | sed 's/\.gif$//' | sort -f
+#!/bin/bash
+
+find . -type f -name "*.gif" | while read -r file; do
+    filename="${file##*/}"  # Extract filename from path
+    filename="${filename%.*}"  # Remove extension
+
+    echo "$filename"
+done | LC_ALL=C sort -f  # Sort case-insensitively
+
+echo  # New line at the end
